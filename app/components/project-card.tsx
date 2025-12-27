@@ -1,0 +1,76 @@
+import { Project, projects } from "../data/projects";
+import Image from "next/image";
+
+type Props = {
+  id?: string;
+};
+
+export default function ProjectCard({ id }: Props) {
+  const project: Project | undefined = projects.find((p) => p.id === id);
+
+  if (!project) {
+    return <p>{id} not found</p>;
+  }
+
+  return (
+    <article className="grid gap-4 ">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div className="grid gap-4 md:mt-10">
+          <h1 className="font-bold text-2xl">{project.title}</h1>
+          {project.intro && (
+            <p className="text-muted max-w-">{project.intro}</p>
+          )}
+
+          {project.meta && (
+            <div className="flex text-sm gap-2 flex-wrap">
+              {project.meta.role && (
+                <span className="">Roll: {project.meta.role}</span>
+              )}
+              {project.meta.year && (
+                <span className="">År: {project.meta.year}</span>
+              )}
+              {project.meta.tools && (
+                <span className="">
+                  Verktyg: {project.meta.tools.join(", ")}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+        {project.logo && (
+          <Image
+            width={150}
+            height={150}
+            className="mb-auto object-cover rounded-full"
+            src={project.logo.replace("@/public/", "/")}
+            alt={`${project.title} logo`}
+          />
+        )}
+      </div>
+
+      <div className="grid gap-4">
+        {project.contentSections?.map((sec, i) => (
+          <section key={i}>
+            <h2 className="text-lg font-semibold">{sec.heading}</h2>
+            <p className="text-muted">{sec.body}</p>
+          </section>
+        ))}
+
+        {project.images && project.images.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {project.images.map((src, i) => (
+              <Image
+                key={i}
+                width={400}
+                height={300}
+                className="object-cover rounded"
+                src={src.replace("@/public/", "/")}
+                alt={`${project.title} ${i}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
