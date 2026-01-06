@@ -14,6 +14,8 @@ export type Project = {
   contentSections?: { heading: string; body: string }[];
   images?: string[];
   logo?: string;
+  logow?: number;
+  logoh?: number;
 };
 
 export const projects: Project[] = [
@@ -29,9 +31,20 @@ export const projects: Project[] = [
     contentSections: [
       { heading: "Overview", body: "Short overview text for SEB project." },
       { heading: "Resultat", body: "Result summary for SEB project." },
+
+      {
+        heading: "Goal",
+        body: "How can we create a balance between self-service and personal service to meet insurance customers' needs? What factors influence customers' choice between these options?",
+      },
+      {
+        heading: "Process",
+        body: "We started the project with an environmental analysis, conducted interviews and surveys, created segmentations and personas, and ran workshops to generate insights and solution hypotheses.",
+      },
     ],
     images: [],
     logo: "/seb-logo.png",
+    logow: 730,
+    logoh: 729,
   },
   {
     id: "folksam",
@@ -60,8 +73,15 @@ export const projects: Project[] = [
         body: "Suggested implementing a feedback form for customers switching from digital to personal service and organizing virtual customer service events to reduce repetitive inquiries.",
       },
     ],
-    images: [],
+    images: [
+      "/folksam1.png",
+      "/folksam2.png",
+      "/folksam3.png",
+      "/folksam4.png",
+    ],
     logo: "/folksam-logo.png",
+    logow: 817,
+    logoh: 815,
   },
   {
     id: "zington",
@@ -96,6 +116,8 @@ export const projects: Project[] = [
     ],
     images: [],
     logo: "/zington-logo.png",
+    logow: 629,
+    logoh: 301,
   },
   {
     id: "moderna",
@@ -128,8 +150,10 @@ export const projects: Project[] = [
         body: "- The choice of red color in the calendar is confusing and gives the impression that it is fully booked. - Users like the visuals; they think it has a sleek and stylish design. - The purchasing process is considered easy to understand; 3 out of 4 people think that the shopping cart is clear and easy to comprehend. - The homepage doesn't feel inspiring and lacks information about each artist and exhibition. Improvements: add an English option, add short texts under exhibitions to capture interest, remove misleading red from the calendar, add an accessibility icon under the shopping cart, and avoid small text overlays on images.",
       },
     ],
-    images: [],
-    logo: "/moderna-museet-logo.png",
+    images: ["/modernamuseet-logo.png", "/modernamuseet-logo.png"],
+    logo: "/modernamuseet-logo.png",
+    logow: 918,
+    logoh: 329,
   },
 ];
 

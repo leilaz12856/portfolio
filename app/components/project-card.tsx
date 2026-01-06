@@ -37,39 +37,35 @@ export default function ProjectCard({ id }: Props) {
             </div>
           )}
         </div>
-        {project.logo && (
-          <Image
-            width={150}
-            height={150}
-            className="mb-auto object-cover rounded-full"
-            src={project.logo.replace("@/public/", "/")}
-            alt={`${project.title} logo`}
-          />
-        )}
+        <div className="max-w-30  max-h-30 flex-shrink-0">
+          {project.logo && (
+            <Image
+              width={project.logow || 500}
+              height={project.logoh || 500}
+              className="mb-auto rounded"
+              src={project.logo.replace("@/public/", "/")}
+              alt={`${project.title} logo`}
+            />
+          )}
+        </div>
       </div>
 
-      <div className="grid gap-4">
+      <div className="grid gap-8">
         {project.contentSections?.map((sec, i) => (
           <section key={i}>
             <h2 className="text-lg font-semibold">{sec.heading}</h2>
             <p className="text-muted">{sec.body}</p>
-          </section>
-        ))}
-
-        {project.images && project.images.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.images.map((src, i) => (
+            {project.images && project.images[i] && (
               <Image
-                key={i}
                 width={400}
                 height={300}
-                className="object-cover rounded"
-                src={src.replace("@/public/", "/")}
+                className="object-cover rounded mt-4"
+                src={project.images[i].replace("@/public/", "/")}
                 alt={`${project.title} ${i}`}
               />
-            ))}
-          </div>
-        )}
+            )}
+          </section>
+        ))}
       </div>
     </article>
   );
